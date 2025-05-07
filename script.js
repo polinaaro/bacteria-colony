@@ -18,7 +18,35 @@ function Bacteria(x, y){
         ctx.fillStyle = this.colour
         ctx.fill()
     }
+
+    this.move = function(){
+        this.x += Math.cos(this.direction)*this.speed;
+        this.y += Math.sin(this.direction)*this.speed;
+    }
+
+    this.update = function(){
+        this.move()
+    }
 }
 
-let b = new Bacteria(100, 200)
-b.draw()
+
+let bacterias = []
+
+
+for (let i = 0; i < 5; i++){
+    bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
+
+}
+
+function animate(){
+    ctx.fillStyle = 'rgb(255, 230, 215)'
+    ctx.fillRect(0,0,canvas.width, canvas.height)
+    for (let i = bacterias.length-1; i >= 0; i--){
+        let b = bacterias[i]
+        b.draw()
+        b.update()
+    }
+    requestAnimationFrame(animate)
+}
+
+animate()
