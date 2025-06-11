@@ -1,10 +1,14 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
+let foodnum = document.getElementById("foodnum")
+let foodamount = 75
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 let bacterias = []
 let foods = []
 
+
+foodnum.innerHTML = "food amount:"+foodamount
 
 function Bacteria(x, y) {
     this.x = x;
@@ -131,6 +135,8 @@ function Food(x, y) {
 }
 canvas.onclick = function (event) {
     foods.push(new Food(event.clientX, event.clientY))
+    foodamount = foodamount - 1
+    foodnum.innerHTML = "food amount:"+foodamount
 }
 
 
@@ -162,3 +168,4 @@ let e = new Enemy(Math.random() * canvas.width, Math.random() * canvas.height)
 e.draw()
 animate()
 console.log(e);
+
