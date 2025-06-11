@@ -34,8 +34,8 @@ function Bacteria(x, y) {
             const dx = this.x - food.x
             const dy = this.y - food.y
             const dist = Math.sqrt(dx ** 2 + dy ** 2)
-            mindist = dist
             if (dist < mindist) {
+                mindist = dist
                 closestfood = food
             }
         })
@@ -104,6 +104,8 @@ function Enemy(x, y){
             let xPos = this.x + Math.cos(i * angle) * this.radius;
             let yPos = this.y + Math.sin(i * angle) * this.radius;
             ctx.lineTo(xPos, yPos);
+            console.log("for");
+            
         }
         ctx.closePath();
         ctx.fill();
@@ -159,3 +161,4 @@ function animate() {
 let e = new Enemy(Math.random() * canvas.width, Math.random() * canvas.height)
 e.draw()
 animate()
+console.log(e);
