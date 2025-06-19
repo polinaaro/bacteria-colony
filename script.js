@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 let foodnum = document.getElementById("foodnum")
-let foodamount = 75
+let foodamount = 50
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 let bacterias = []
@@ -101,8 +101,8 @@ function Enemy(x, y) {
     this.direction = Math.random() * Math.PI * 2
 
     this.draw = function () {
-        drawStar(this.x, this.y, this.points, this.radius*2, this.radius, this.colour)
-        
+        drawStar(this.x, this.y, this.points, this.radius * 2, this.radius, this.colour)
+
     }
     this.move = function () {
         let closestbacteria = null
@@ -151,7 +151,15 @@ function Enemy(x, y) {
             let dy = this.y - bacteria.y
             let dist = Math.sqrt(dx ** 2 + dy ** 2)
             if (dist < this.radius + bacteria.radius) {
-                bacterias.splice(i, 1)
+                if (bacteria.energy > this.energy) {
+                    enemies.splice(enemies.indexOf(this), 1)
+                    foodamount = foodamount + 35
+                    foodnum.innerHTML = "food amount: " + foodamount
+                }
+                else {
+
+                    bacterias.splice(i, 1)
+                }
             }
         }
     }
@@ -175,9 +183,14 @@ function Food(x, y) {
 
 }
 canvas.onclick = function (event) {
-    foods.push(new Food(event.clientX, event.clientY))
-    foodamount = foodamount - 1
-    foodnum.innerHTML = "food amount:" + foodamount
+    if (foodamount > 0) {
+        foods.push(new Food(event.clientX, event.clientY))
+        foodamount = foodamount - 1
+        foodnum.innerHTML = "food amount: " + foodamount
+    }
+    else {
+        foodnum.innerHTML = "no more food"
+    }
 }
 
 
@@ -192,7 +205,7 @@ for (let i = 0; i < 3; i++) {
 }
 function drawStar(x, y, points, outerRadius, innerRadius, color) {
     let angle = Math.PI / points;
-    
+
 
     ctx.fillStyle = color;
     ctx.beginPath();
