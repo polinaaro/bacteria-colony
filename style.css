@@ -15,10 +15,31 @@ canvas{
     position: fixed;
     left: 80px;
     bottom: 80px;
-    width: 300px;
-    height: 100px;
+    width: 150px;
+    padding: 10px;
     background-color: rgba(250, 235, 215, 0.491);
     border: rgba(128, 128, 128, 0.502) 3px solid;
     border-radius: 6px;
+    font-family: "Comfortaa", sans-serif;
     backdrop-filter: blur(5px);
+    color: rgb(120, 120, 120);
 }
+
+#gameover{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) grayscale(100%);
+    color: rgb(255, 117, 102);
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+
