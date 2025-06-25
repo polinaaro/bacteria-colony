@@ -41,5 +41,16 @@ canvas{
     gap: 30px;
 }
 
+#gameover button{
+    padding: 3px 20px;
+    border-radius: 6px;   
+    background: transparent;
+    height: 40px;
+}
 
+#gameover button:hover{
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+}
 
