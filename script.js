@@ -14,6 +14,7 @@ canvas.height = window.innerHeight
 let bacterias = []
 let foods = []
 let enemies = []
+let enemyfrequency = 0.000001
 
 foodnum.innerHTML = "food amount:" + foodamount.number
 
@@ -33,20 +34,26 @@ restart.onclick = function (event) {
     gameover.style.opacity = 0
     gameover.style.pointerEvents = "none"
     for (let i = 0; i < 5; i++) {
-    bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
-}
+        bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
+    }
 
-    
+
 }
 
 for (let i = 0; i < 5; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
 }
+console.log(bacterias);
+
 
 for (let i = 0; i < 10; i++) {
     enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
 }
 
+setInterval(function () {
+    enemyfrequency = enemyfrequency + 0.0002
+
+}, 1000)
 
 function animate() {
     ctx.fillStyle = 'rgb(249, 237, 255)'
@@ -64,24 +71,22 @@ function animate() {
         e.draw()
         e.update()
     }
-    if (Math.random() < 0.000001){
-             enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
+    if (Math.random() < enemyfrequency) {
+        enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
 
     }
     foods.forEach(food => food.draw())
     requestAnimationFrame(animate)
-    if (bacterias.length == 0){
-         gameover.style.opacity = 1
+    if (bacterias.length == 0) {
+        gameover.style.opacity = 1
         gameover.style.pointerEvents = "auto"
-      }
-      else{
+    }
+    else {
         gameover.style.opacity = 0
         gameover.style.pointerEvents = "none"
-      }
+    }
 }
 
 
 animate()
-
-
 
