@@ -62,7 +62,7 @@ export default function Enemy(x, y, enemies, bacterias, foodamount, foodnum, ctx
                 if (bacteria.energy > this.energy) {
                     enemies.splice(enemies.indexOf(this), 1)
                     foodamount.number = foodamount.number + 35
-                    
+
                     foodnum.innerHTML = "food amount: " + foodamount.number
                 }
                 else {
@@ -70,8 +70,8 @@ export default function Enemy(x, y, enemies, bacterias, foodamount, foodnum, ctx
                     for (let i = 0; i < 3; i++) {
                         enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
                     }
-                    
-                } 
+
+                }
             }
         }
     }
