@@ -61,7 +61,7 @@ export default function Enemy(x, y, enemies, bacterias, foodamount, foodnum, ctx
             if (dist < this.radius + bacteria.radius) {
                 if (bacteria.energy > this.energy) {
                     enemies.splice(enemies.indexOf(this), 1)
-                    foodamount.number = foodamount.number + 35
+                    foodamount.number = foodamount.number + 15
 
                     foodnum.innerHTML = "food amount: " + foodamount.number
                 }

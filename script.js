@@ -8,7 +8,9 @@ let foodamount = {
     number: 50
 }
 let restart = document.getElementById("restart")
+let restartwin = document.getElementById("restartwin")
 let gameover = document.getElementById("gameover")
+let won = document.getElementById("won")
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 let bacterias = []
@@ -31,14 +33,32 @@ canvas.onclick = function (event) {
 
 
 restart.onclick = function (event) {
-    gameover.style.opacity = 0
-    gameover.style.pointerEvents = "none"
+    enemies = []
+    bacterias = []
+    foodamount.number = 50
+    foodnum.innerHTML = "food amount: " + foodamount.number
     for (let i = 0; i < 5; i++) {
         bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
     }
-
-
+    for (let i = 0; i < 10; i++) {
+        enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
+    }
 }
+
+restartwin.onclick = function (event) {
+    enemies = []
+    bacterias = []
+    foodamount.number = 50
+    foodnum.innerHTML = "food amount: " + foodamount.number
+    for (let i = 0; i < 5; i++) {
+        bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
+    }
+    for (let i = 0; i < 10; i++) {
+        enemies.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height, enemies, bacterias, foodamount, foodnum, ctx))
+    }
+}
+
+
 
 for (let i = 0; i < 5; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height, ctx, bacterias, foods))
@@ -51,7 +71,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 setInterval(function () {
-    enemyfrequency = enemyfrequency + 0.0002
+    enemyfrequency = enemyfrequency + 0.000002
 
 }, 1000)
 
@@ -84,6 +104,14 @@ function animate() {
     else {
         gameover.style.opacity = 0
         gameover.style.pointerEvents = "none"
+    }
+    if (enemies.length == 0) {
+        won.style.opacity = 1
+        won.style.pointerEvents = "auto"
+    }
+    else {
+        won.style.opacity = 0
+        won.style.pointerEvents = "none"
     }
 }
 
