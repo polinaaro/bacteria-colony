@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
 
     <title>Document</title>
 </head>
+
 <body>
     <canvas id="canvas">
     </canvas>
     <div id="foodamount">
         <h5 id="foodnum"></h5>
     </div>
-    <div id="gameover">
-        <h1>GAME OVER</h1>
-        <button id="restart">restart?</button>
+    <div class="screens">
+        <div id="gameover">
+            <h1>GAME OVER</h1>
+            <button id="restart">restart?</button>
+        </div>
+        <div id="won">
+            <h1>YOU WIN!</h1>
+            <button id="restartwin">restart?</button>
+        </div>
     </div>
+
     <script src="script.js" type="module"></script>
 </body>
-</html>
 
+</html>
