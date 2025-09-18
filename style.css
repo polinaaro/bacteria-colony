@@ -25,7 +25,7 @@ canvas {
     color: rgb(120, 120, 120);
 }
 
-#gameover {
+#gameover, #won {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -43,7 +43,9 @@ canvas {
     transition-duration: .3s;
 }
 
-#gameover button {
+
+
+#gameover button, #won button {
     border: 2px solid rgb(52, 52, 52);
     padding: 3px 20px;
     border-radius: 6px;
@@ -51,7 +53,7 @@ canvas {
     height: 40px;
 }
 
-#gameover button:hover {
+#gameover button:hover, #won button:hover {
     background-color: rgb(255, 255, 255);
     cursor: pointer;
 
